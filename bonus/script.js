@@ -2,7 +2,6 @@
 const inputCognome = document.getElementById("cognome");
 const btn = document.getElementById("btn");
 const msg = document.getElementById("msg");
-const lista = document.getElementById("lista");
 
 /* Array precompilata */
 var cognomi = ["Bianchi", "Rossi", "Verdi", "Viterbo", "Costanzo", "Cosentino"];
@@ -21,21 +20,52 @@ function inserisciCognome(event) {
 
 /* Ordino array */
 function ordinaArray(cognome) {
-    cognomi.sort();
-    dichiaraPosizione(cognome);
+    /* Creo un'array con i cognomi in lowercase e poi la ordino */
+    var cognomiLower = [];
+    for (i = 0; i < cognomi.length; i++) {
+        let lowerCognome = cognomi[i].toLowerCase();
+        cognomiLower.push(lowerCognome);
+    }
+    // cognomiLower.sort();
+    /* Riordino manuale */
+    let arrayFullyOrdered = false;
+    let listaTemporanea = cognomiLower;
+    while (!arrayFullyOrdered) {
+        listaErrori = [];
+        for (let i = 1; i < listaTemporanea.length; i++) {
+            const primoCognome = listaTemporanea[i - 1];
+            const secondoCognome = listaTemporanea[i];
+            if (secondoCognome < primoCognome) {
+                listaTemporanea[i - 1] = secondoCognome;
+                listaTemporanea[i] = primoCognome;
+                listaErrori.push(false);
+            }
+            else {
+                listaErrori.push(true);
+            }
+        }
+        if (!listaErrori.includes(false)) {
+            arrayFullyOrdered = true;
+        }
+    }
+
+    appendFunc(cognome, cognomiLower);
 }
 
-function dichiaraPosizione(cognome) {
-    var index = 1 + cognomi.indexOf(cognome);
+function appendFunc(cognome, cognomiLower) {
+    var index = 1 + cognomiLower.indexOf(cognome.toLowerCase());
     index = index.toString();
     msg.innerHTML = "Il tuo cognome è nella posizione numero<br>" + index + "<br>della lista:";
-    stampaLista();
+    stampaLista(cognomiLower);
 }
 
-function stampaLista() {
-    for (let i = 0; i < cognomi.length; i++) {
-        const cognome = cognomi[i].toString();
-        console.log(cognome);
+function stampaLista(cognomiLower) {
+    /* Riconverto i cognomi in forma capitalized e stampo la lista */
+    lista.innerHTML = "";
+    for (let i = 0; i < cognomiLower.length; i++) {
+        var cognome = cognomiLower[i].toString();
+        /* converto il cognome a capitalized */
+        cognome = cognome.charAt(0).toUpperCase() + cognome.slice(1);
         const listItem = document.createElement("li");
         listItem.innerHTML = cognome;
         lista.appendChild(listItem);
