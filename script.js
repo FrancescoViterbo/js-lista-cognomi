@@ -42,8 +42,9 @@ function stampaLista(cognomiLower) {
     /* Riconverto i cognomi in forma capitalized e stampo la lista */
     lista.innerHTML = "";
     for (let i = 0; i < cognomiLower.length; i++) {
-        const cognome = cognomiLower[i].toString();
-        console.log(cognome);
+        var cognome = cognomiLower[i].toString();
+        /* converto il cognome a capitalized */
+        cognome = cognome.charAt(0).toUpperCase() + cognome.slice(1);
         const listItem = document.createElement("li");
         listItem.innerHTML = cognome;
         lista.appendChild(listItem);
