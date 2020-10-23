@@ -49,6 +49,8 @@ function ordinaArray(cognome) {
         }
     }
 
+    cognomiLower = listaTemporanea;
+
     appendFunc(cognome, cognomiLower);
 }
 
