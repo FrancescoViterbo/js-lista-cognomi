@@ -26,7 +26,7 @@ function ordinaArray(cognome) {
         let lowerCognome = cognomi[i].toLowerCase();
         cognomiLower.push(lowerCognome);
     }
-    // cognomiLower.sort();
+
     /* Riordino manuale */
     let arrayFullyOrdered = false;
     let listaTemporanea = cognomiLower;
