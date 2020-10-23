@@ -12,18 +12,20 @@ btn.addEventListener("click", inserisciCognome);
 function inserisciCognome(event) {
     event.preventDefault();
 
-    cognomi.push(inputCognome.value);
+    var cognome = inputCognome.value;
+    cognomi.push(cognome);
     inputCognome.value = "";
-    ordinaArray();
+    ordinaArray(cognome);
 }
 
 /* Ordino array */
-function ordinaArray() {
+function ordinaArray(cognome) {
     cognomi.sort();
-    appendFunc();
+    appendFunc(cognome);
 }
 
-function appendFunc() {
-    
-    msg.appendChild()
+function appendFunc(cognome) {
+    var index = 1 + cognomi.indexOf(cognome);
+    index = index.toString();
+    msg.innerHTML = "Il tuo cognome è nella posizione numero<br>" + index + "<br>della lista.";
 }
