@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    padding: 4rem 0;
+}
+
+form {
+    margin: 0 auto;
+    width: 600px;
+}
+
+input, button {
+    display: block;
+    margin: 1rem auto;
+    padding: 0.5rem 1rem;
+    width: 20rem;
+    border-radius: 5px;
+}
+
+input {
+    box-shadow: inset 2px 2px 5px black;
+    border: 0;
+}
+
+button {
+    box-shadow: 2px 2px 5px black;
+    color: white;
+    background: #000000;
+    font-size: 25px;
+    font-weight: bold;
+    width: 8rem;
+    height: 3rem;
+}
+
+button:active {
+    color: black;
+    background: #ffffff;
+}
