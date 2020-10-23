@@ -2,6 +2,7 @@
 const inputCognome = document.getElementById("cognome");
 const btn = document.getElementById("btn");
 const msg = document.getElementById("msg");
+const lista = document.getElementById("lista");
 
 /* Array precompilata */
 var cognomi = ["Bianchi", "Rossi", "Verdi", "Viterbo", "Costanzo", "Cosentino"];
@@ -20,29 +21,20 @@ function inserisciCognome(event) {
 
 /* Ordino array */
 function ordinaArray(cognome) {
-    /* Creo un'array con i cognomi in lowercase e poi la ordino */
-    var cognomiLower = [];
-    for (i = 0; i < cognomi.length; i++) {
-        let lowerCognome = cognomi[i].toLowerCase();
-        cognomiLower.push(lowerCognome);
-    }
-    cognomiLower.sort();
-    console.log(cognome + cognomiLower)
-    appendFunc(cognome, cognomiLower);
+    cognomi.sort();
+    dichiaraPosizione(cognome);
 }
 
-function appendFunc(cognome, cognomiLower) {
-    var index = 1 + cognomiLower.indexOf(cognome.toLowerCase());
+function dichiaraPosizione(cognome) {
+    var index = 1 + cognomi.indexOf(cognome);
     index = index.toString();
     msg.innerHTML = "Il tuo cognome è nella posizione numero<br>" + index + "<br>della lista:";
-    stampaLista(cognomiLower);
+    stampaLista();
 }
 
-function stampaLista(cognomiLower) {
-    /* Riconverto i cognomi in forma capitalized e stampo la lista */
-    lista.innerHTML = "";
-    for (let i = 0; i < cognomiLower.length; i++) {
-        const cognome = cognomiLower[i].toString();
+function stampaLista() {
+    for (let i = 0; i < cognomi.length; i++) {
+        const cognome = cognomi[i].toString();
         console.log(cognome);
         const listItem = document.createElement("li");
         listItem.innerHTML = cognome;
