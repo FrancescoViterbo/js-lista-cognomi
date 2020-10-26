@@ -22,9 +22,12 @@ function inserisciCognome(event) {
 function ordinaArray(cognome) {
     /* Creo un'array con i cognomi in lowercase e poi la ordino */
     var cognomiLower = [];
-    for (i = 0; i < cognomi.length; i++) {
-        let lowerCognome = cognomi[i].toLowerCase();
+    var index = 0;
+    while (index < cognomi.length) {
+        let lowerCognome = cognomi[index].toLowerCase();
         cognomiLower.push(lowerCognome);
+
+        index++;
     }
     cognomiLower.sort();
     console.log(cognome + cognomiLower)
